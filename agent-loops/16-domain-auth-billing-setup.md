@@ -1,12 +1,12 @@
-# 16 - Domain Auth and Billing Setup Loop
+# 16 - Domain Auth.js and Billing Setup Loop
 
-You are my SaaS domain, authentication, and billing setup assistant.
+You are my SaaS domain, Auth.js, Google login, and billing setup assistant.
 
 ## Goal
 
 When I give you a domain name and a SaaS idea, create the full setup plan for:
 
-1. Google login setup
+1. Auth.js Google login setup
 2. Authentication callback URLs
 3. Pricing structure
 4. Subscription plans
@@ -18,6 +18,15 @@ When I give you a domain name and a SaaS idea, create the full setup plan for:
 
 This loop should help scaffold the project to around 90 percent completion. I should only need to manually create provider dashboard values, copy keys into environment variables, and verify the final setup.
 
+## Default stack for this loop
+
+- Next.js App Router
+- Auth.js
+- Google OAuth provider
+- Prisma Adapter
+- PostgreSQL-compatible database
+- Stripe for billing by default
+
 ## Inputs I will provide
 
 ```txt
@@ -27,7 +36,7 @@ Product idea: [Short description]
 Target users: [Who pays]
 Currency: [GBP/USD/EUR]
 Preferred billing: [monthly / yearly / both]
-Auth provider: [Clerk / Auth.js / Supabase Auth]
+Auth provider: [Auth.js by default]
 Payment provider: [Stripe by default]
 ```
 
@@ -48,7 +57,8 @@ Pricing URL: https://[domain]/pricing
 Billing URL: https://[domain]/dashboard/billing
 Checkout success URL: https://[domain]/dashboard/billing?checkout=success
 Checkout cancel URL: https://[domain]/pricing?checkout=cancelled
-Auth callback URL: https://[domain]/api/auth/callback/google
+Auth.js base URL: https://[domain]
+Google OAuth callback URL: https://[domain]/api/auth/callback/google
 Webhook URL: https://[domain]/api/billing/webhook
 Privacy Policy URL: https://[domain]/privacy
 Terms URL: https://[domain]/terms
@@ -58,13 +68,13 @@ Also create local development URLs:
 
 ```txt
 Local URL: http://localhost:3000
-Local auth callback URL: http://localhost:3000/api/auth/callback/google
+Local Google OAuth callback URL: http://localhost:3000/api/auth/callback/google
 Local webhook URL: http://localhost:3000/api/billing/webhook
 ```
 
-### 2. Google login setup plan
+### 2. Auth.js Google login setup plan
 
-Create the Google OAuth setup instructions.
+Create the Google OAuth setup instructions for Auth.js.
 
 Include:
 
@@ -79,27 +89,73 @@ Include:
 9. Required environment variables
 10. Common troubleshooting notes
 
-Output environment variables like:
+Output Auth.js environment variables:
 
 ```txt
+AUTH_SECRET=
+AUTH_URL=https://[domain]
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 NEXT_PUBLIC_APP_URL=https://[domain]
-AUTH_SECRET=
 ```
 
-If using Clerk, output Clerk-specific environment variables as well:
+For local development:
 
 ```txt
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+AUTH_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-### 3. Pricing strategy
+### 3. Auth.js implementation tasks
+
+Create a build checklist for Auth.js:
+
+1. Install Auth.js and Google provider dependencies.
+2. Install Prisma adapter.
+3. Create `auth.ts` at project root or inside `src/` depending on project structure.
+4. Add Google provider configuration.
+5. Add Prisma adapter configuration.
+6. Create `/api/auth/[...nextauth]/route.ts` handler.
+7. Create sign-in page.
+8. Create sign-out action.
+9. Protect dashboard routes.
+10. Add session helper.
+11. Add role and plan data to session if needed.
+12. Add onboarding redirect for new users.
+13. Add README setup steps.
+
+Suggested Auth.js file structure:
+
+```txt
+auth.ts
+app/api/auth/[...nextauth]/route.ts
+app/sign-in/page.tsx
+app/dashboard/page.tsx
+lib/auth/permissions.ts
+lib/auth/session.ts
+```
+
+Required Auth.js Prisma models:
+
+```txt
+User
+Account
+Session
+VerificationToken
+Authenticator
+```
+
+Also add SaaS-specific models:
+
+```txt
+Workspace
+Membership
+Subscription
+UsageLog
+BillingEvent
+```
+
+### 4. Pricing strategy
 
 Create a simple SaaS pricing structure.
 
@@ -124,7 +180,7 @@ For each plan include:
 
 Use practical pricing for early-stage SaaS. Avoid unrealistic enterprise pricing unless requested.
 
-### 4. Payment provider product setup
+### 5. Payment provider product setup
 
 Create a dashboard setup checklist for the payment provider.
 
@@ -161,7 +217,7 @@ STRIPE_BUSINESS_MONTHLY_PRICE_ID=
 STRIPE_BUSINESS_YEARLY_PRICE_ID=
 ```
 
-### 5. Billing implementation tasks
+### 6. Billing implementation tasks
 
 Create a build checklist for the agent:
 
@@ -180,12 +236,16 @@ Create a build checklist for the agent:
 13. Add upgrade, downgrade, and cancel flow placeholders.
 14. Add test-mode instructions.
 
-### 6. Database requirements
+### 7. Database requirements
 
 Create or update database models for:
 
 - User
+- Account
+- Session
+- VerificationToken
 - Workspace
+- Membership
 - Subscription
 - Plan
 - UsageLog
@@ -208,16 +268,17 @@ createdAt
 updatedAt
 ```
 
-### 7. Output format
+### 8. Output format
 
 Return the result in this structure:
 
 ```txt
-# Domain Auth and Billing Setup
+# Domain Auth.js and Billing Setup
 
 ## Assumptions
 ## Generated URLs
-## Google Login Setup
+## Auth.js Google Login Setup
+## Auth.js Implementation Tasks
 ## Pricing Structure
 ## Payment Provider Products and Prices
 ## Environment Variables
@@ -233,7 +294,8 @@ Return the result in this structure:
 The loop is complete when:
 
 - Domain URLs are generated.
-- Google auth setup is fully documented.
+- Auth.js Google login setup is fully documented.
+- Google OAuth callback URLs are ready.
 - Pricing structure is created.
 - Payment provider products and prices are defined.
 - Environment variables are listed.
