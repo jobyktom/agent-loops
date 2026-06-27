@@ -4,23 +4,40 @@ Reusable agent prompt loops for scaffolding SaaS applications quickly and consis
 
 These loops are designed for Codex, Claude Code, ChatGPT agents, or any coding assistant that can read project files and execute structured tasks.
 
+## Recommended flow
+
+Do not start from code. Start from the product idea, convert it into a PRD, then scaffold.
+
+```txt
+One-line idea -> PRD + market check -> SaaS scaffold -> auth -> billing -> analytics -> testing -> deployment
+```
+
 ## How to use
 
 Copy this repository or the `agent-loops/` folder into any new SaaS project.
 
-Then ask your agent:
+For a new product idea, ask your agent:
 
 ```txt
-Read agent-loops/01-master-saas-scaffold.md and execute it for this SaaS idea:
+Read agent-loops/00-idea-to-prd-market-research.md and create a PRD for this SaaS idea:
 
-[PASTE YOUR SAAS IDEA]
+Product idea: [PASTE YOUR ONE-LINE SAAS IDEA]
+Target users: [OPTIONAL]
+Market: [OPTIONAL]
+Domain: [OPTIONAL]
+```
+
+Then ask:
+
+```txt
+Read agent-loops/01-master-saas-scaffold.md and scaffold the SaaS based on the PRD.
 
 Use the default stack unless there is a strong reason not to.
 Build the project to 90% completion.
 Leave only env setup, provider keys and final business rules for me.
 ```
 
-For domain, auth, and billing setup, ask:
+For domain, Auth.js, and billing setup, ask:
 
 ```txt
 Read agent-loops/16-domain-auth-billing-setup.md and create the setup plan for:
@@ -31,12 +48,13 @@ Product idea: [your SaaS idea]
 Target users: [who will pay]
 Currency: [GBP/USD/EUR]
 Preferred billing: [monthly / yearly / both]
-Auth provider: [Clerk / Auth.js / Supabase Auth]
+Auth provider: [Auth.js]
 Payment provider: [Stripe]
 ```
 
 ## Suggested execution order
 
+0. `00-idea-to-prd-market-research.md`
 1. `01-master-saas-scaffold.md`
 2. `02-ui-ux-design.md`
 3. `03-auth-prisma.md`
@@ -62,7 +80,7 @@ Payment provider: [Stripe]
 - shadcn/ui
 - Prisma ORM
 - PostgreSQL-compatible database
-- Clerk or Auth.js
+- Auth.js
 - Google login
 - Subscription billing
 - PostHog or GA4 analytics
