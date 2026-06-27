@@ -1,98 +1,96 @@
 # Agent Loops
 
-Reusable agent prompt loops for scaffolding SaaS applications quickly and consistently.
+Reusable, low-token agent loops for building SaaS apps consistently.
 
-These loops are designed for Codex, Claude Code, ChatGPT agents, or any coding assistant that can read project files and execute structured tasks.
+## Core rule
 
-## Recommended flow
-
-Do not start from code. Start from the product idea, convert it into a PRD, create a unique brand/design direction, then scaffold.
+Do not scaffold from a one-line idea. First create a PRD, then create a unique brand/frontend direction, then build.
 
 ```txt
-One-line idea -> PRD + market check -> unique brand/frontend design -> SaaS scaffold -> auth -> billing -> analytics -> testing -> deployment
+Idea -> PRD -> Unique Design -> Scaffold -> Auth/DB -> Billing -> Analytics -> Testing -> Security -> Deploy
 ```
 
-## How to use
+## Recommended core order
 
-Copy this repository or the `agent-loops/` folder into any new SaaS project.
+1. `00-idea-to-prd-market-research.md`
+2. `02a-unique-frontend-brand-design.md`
+3. `01-master-saas-scaffold.md`
+4. `02-ui-ux-design.md`
+5. `03-auth-prisma.md`
+6. `05-billing.md`
+7. `07-analytics.md`
+8. `08-agent-readiness.md` only if the app exposes APIs/agent workflows
+9. `09-marketing.md`
+10. `10-testing.md`
+11. `13-email-notifications.md` only if emails are needed in v1
+12. `14-security-hardening.md`
+13. `15-deployment.md`
+14. `16-domain-auth-billing-setup.md` when domain/provider setup is needed
 
-For a new product idea, ask your agent:
+## Deprecated / do not use directly
+
+These are kept only as pointers for older workflows:
+
+- `04-google-login.md` -> use `03-auth-prisma.md`
+- `06-database-seed.md` -> use `03-auth-prisma.md`
+- `11-ecommerce-testing.md` -> use `05-billing.md` and `10-testing.md`
+
+## Standard usage
 
 ```txt
-Read agent-loops/00-idea-to-prd-market-research.md and create a PRD for this SaaS idea:
+Read agent-loops/00-idea-to-prd-market-research.md and create a PRD for:
 
-Product idea: [PASTE YOUR ONE-LINE SAAS IDEA]
-Target users: [OPTIONAL]
-Market: [OPTIONAL]
-Domain: [OPTIONAL]
+Product idea: [your one-line idea]
+Target users: [optional]
+Market/country: [optional]
+Domain: [optional]
 ```
 
-Then create the unique frontend/brand direction:
+Then:
 
 ```txt
-Read agent-loops/02a-unique-frontend-brand-design.md and create a unique frontend design system for this PRD.
-
-The design must not look like a generic AI-generated SaaS app.
-Create brand identity, logo/icon prompts, layout system, component styling rules, and anti-generic checks before implementation.
+Read agent-loops/02a-unique-frontend-brand-design.md and create a unique brand/frontend design system from the PRD.
+Avoid generic AI SaaS patterns.
 ```
 
-Then scaffold:
+Then:
 
 ```txt
-Read agent-loops/01-master-saas-scaffold.md and scaffold the SaaS based on the PRD and the unique frontend brand design system.
-
-Use the default stack unless there is a strong reason not to.
-Build the project to 90% completion.
-Leave only env setup, provider keys and final business rules for me.
+Read agent-loops/01-master-saas-scaffold.md and scaffold the app from the PRD and brand system.
+Build to 90 percent completion. Leave only secrets, provider dashboard setup, and final business edge cases for me.
 ```
 
-For domain, Auth.js, and billing setup, ask:
+For domain, Auth.js, and billing setup:
 
 ```txt
 Read agent-loops/16-domain-auth-billing-setup.md and create the setup plan for:
 
-Domain: [yourdomain.com]
-App name: [your app name]
-Product idea: [your SaaS idea]
-Target users: [who will pay]
-Currency: [GBP/USD/EUR]
-Preferred billing: [monthly / yearly / both]
-Auth provider: [Auth.js]
-Payment provider: [Stripe]
+Domain: [domain.com]
+App name: [name]
+Product idea: [summary]
+Currency: GBP
+Billing: both
+Auth: Auth.js
+Payment: Stripe
 ```
 
-## Suggested execution order
-
-0. `00-idea-to-prd-market-research.md`
-1. `02a-unique-frontend-brand-design.md`
-2. `01-master-saas-scaffold.md`
-3. `02-ui-ux-design.md`
-4. `03-auth-prisma.md`
-5. `04-google-login.md`
-6. `05-billing.md`
-7. `06-database-seed.md`
-8. `07-analytics.md`
-9. `08-agent-readiness.md`
-10. `09-marketing.md`
-11. `10-testing.md`
-12. `11-ecommerce-testing.md`
-13. `12-admin-panel.md`
-14. `13-email-notifications.md`
-15. `14-security-hardening.md`
-16. `15-deployment.md`
-17. `16-domain-auth-billing-setup.md`
-
-## Default SaaS stack
+## Default stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- shadcn/ui as base primitives only
-- Prisma ORM
-- PostgreSQL-compatible database
-- Auth.js
-- Google login
-- Subscription billing
-- PostHog or GA4 analytics
-- Playwright testing
-- Vercel, Hostinger VPS, Railway, Render, or Docker deployment
+- shadcn/ui as primitives only
+- Auth.js + Google OAuth
+- Prisma + PostgreSQL
+- Stripe-style subscriptions
+- PostHog or GA4
+- Playwright
+- Vercel / Hostinger VPS / Railway / Render / Docker
+
+## Token-saving guidance
+
+- Run only the loops needed for the current stage.
+- Do not paste every loop into the agent at once.
+- Do not use deprecated loops.
+- Keep v1 small and useful.
+- Prefer one clear handoff between loops instead of repeating the full product context each time.
