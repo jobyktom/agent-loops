@@ -4,29 +4,30 @@ You are my SaaS QA automation assistant.
 
 ## Goal
 
-Add testing to this SaaS app.
+Add a small, high-value test suite. Do not over-test v1.
 
 ## Use
 
-- Playwright for end-to-end tests
-- Vitest or Jest for unit tests where suitable
+- Playwright for smoke/e2e tests
+- Vitest only for critical helpers if needed
 
-## Create tests for
+## Required tests
 
 1. Landing page loads
 2. Pricing page loads
 3. Sign-in page loads
-4. Protected dashboard redirects unauthenticated users
-5. Authenticated user can access dashboard
-6. Navigation works
-7. Pricing CTA opens checkout route
-8. Settings page loads
-9. API health endpoint works
-10. Mobile viewport smoke test
+4. Unauthenticated dashboard redirects
+5. Authenticated dashboard smoke test or mocked session test
+6. Checkout button/route exists
+7. Billing webhook rejects invalid requests safely
+8. API health endpoint works
+9. Mobile viewport smoke test
 
-## Also create
+## Output
 
-- tests/e2e folder
-- playwright.config.ts
-- test commands in package.json
-- README testing section
+- `tests/e2e` folder
+- Playwright config
+- package scripts
+- README testing notes
+
+Keep tests fast and practical.
