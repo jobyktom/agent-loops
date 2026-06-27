@@ -6,10 +6,10 @@ These loops are designed for Codex, Claude Code, ChatGPT agents, or any coding a
 
 ## Recommended flow
 
-Do not start from code. Start from the product idea, convert it into a PRD, then scaffold.
+Do not start from code. Start from the product idea, convert it into a PRD, create a unique brand/design direction, then scaffold.
 
 ```txt
-One-line idea -> PRD + market check -> SaaS scaffold -> auth -> billing -> analytics -> testing -> deployment
+One-line idea -> PRD + market check -> unique brand/frontend design -> SaaS scaffold -> auth -> billing -> analytics -> testing -> deployment
 ```
 
 ## How to use
@@ -27,10 +27,19 @@ Market: [OPTIONAL]
 Domain: [OPTIONAL]
 ```
 
-Then ask:
+Then create the unique frontend/brand direction:
 
 ```txt
-Read agent-loops/01-master-saas-scaffold.md and scaffold the SaaS based on the PRD.
+Read agent-loops/02a-unique-frontend-brand-design.md and create a unique frontend design system for this PRD.
+
+The design must not look like a generic AI-generated SaaS app.
+Create brand identity, logo/icon prompts, layout system, component styling rules, and anti-generic checks before implementation.
+```
+
+Then scaffold:
+
+```txt
+Read agent-loops/01-master-saas-scaffold.md and scaffold the SaaS based on the PRD and the unique frontend brand design system.
 
 Use the default stack unless there is a strong reason not to.
 Build the project to 90% completion.
@@ -55,29 +64,30 @@ Payment provider: [Stripe]
 ## Suggested execution order
 
 0. `00-idea-to-prd-market-research.md`
-1. `01-master-saas-scaffold.md`
-2. `02-ui-ux-design.md`
-3. `03-auth-prisma.md`
-4. `04-google-login.md`
-5. `05-billing.md`
-6. `06-database-seed.md`
-7. `07-analytics.md`
-8. `08-agent-readiness.md`
-9. `09-marketing.md`
-10. `10-testing.md`
-11. `11-ecommerce-testing.md`
-12. `12-admin-panel.md`
-13. `13-email-notifications.md`
-14. `14-security-hardening.md`
-15. `15-deployment.md`
-16. `16-domain-auth-billing-setup.md`
+1. `02a-unique-frontend-brand-design.md`
+2. `01-master-saas-scaffold.md`
+3. `02-ui-ux-design.md`
+4. `03-auth-prisma.md`
+5. `04-google-login.md`
+6. `05-billing.md`
+7. `06-database-seed.md`
+8. `07-analytics.md`
+9. `08-agent-readiness.md`
+10. `09-marketing.md`
+11. `10-testing.md`
+12. `11-ecommerce-testing.md`
+13. `12-admin-panel.md`
+14. `13-email-notifications.md`
+15. `14-security-hardening.md`
+16. `15-deployment.md`
+17. `16-domain-auth-billing-setup.md`
 
 ## Default SaaS stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- shadcn/ui as base primitives only
 - Prisma ORM
 - PostgreSQL-compatible database
 - Auth.js
