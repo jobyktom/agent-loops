@@ -23,6 +23,21 @@ Add a small, high-value test suite. Do not over-test v1.
 8. API health endpoint works
 9. Mobile viewport smoke test
 
+## Critical journey test
+
+Add one end-to-end or mocked happy-path journey:
+
+```txt
+Visitor -> pricing -> sign in/sign up -> onboarding -> dashboard -> choose plan -> checkout route -> billing success state -> paid feature access
+```
+
+Rules:
+
+- Use mocked auth/session if real OAuth is not practical in CI.
+- Use payment test mode or mocked checkout. Never use real card payments.
+- Test the journey at route/state level if external providers cannot run in CI.
+- Keep this as one focused journey test, not many duplicated tests.
+
 ## Output
 
 - `tests/e2e` folder
