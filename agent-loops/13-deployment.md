@@ -25,9 +25,32 @@ Vercel / Hostinger VPS / Railway / Render / Docker
 9. Rollback notes
 10. Post-deploy smoke test checklist
 
+## Demo/fallback data cleanup
+
+Before production, scan for:
+
+- demo users
+- seed-only records
+- fake metrics
+- mock payments
+- placeholder images
+- lorem ipsum or fallback copy
+- sample products/projects/workspaces
+- hardcoded test IDs
+- temporary dashboard widgets
+
+For each item, decide:
+
+```txt
+remove before production / keep but gate to development / keep as safe empty-state fallback
+```
+
+Add cleanup actions to `TODO.md` or `TODO-demo-data.md`. Production must not expose fake users, fake payments, fake analytics, or placeholder customer data.
+
 ## Verify
 
 - Build passes
 - TypeScript passes
 - Prisma client generates
 - Required environment variables are documented
+- Demo/fallback data cleanup is completed or clearly documented
