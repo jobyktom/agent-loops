@@ -17,7 +17,7 @@ Read agent-loops/01-master-saas-scaffold.md and execute it for this SaaS idea:
 
 Use the default stack unless there is a strong reason not to.
 Build the project to 90% completion.
-Leave only env setup, API keys and final business rules for me.
+Leave only env setup, provider keys and final business rules for me.
 ```
 
 ## Suggested execution order
@@ -26,7 +26,7 @@ Leave only env setup, API keys and final business rules for me.
 2. `02-ui-ux-design.md`
 3. `03-auth-prisma.md`
 4. `04-google-login.md`
-5. `05-stripe-billing.md`
+5. `05-billing.md`
 6. `06-database-seed.md`
 7. `07-analytics.md`
 8. `08-agent-readiness.md`
@@ -48,7 +48,7 @@ Leave only env setup, API keys and final business rules for me.
 - PostgreSQL-compatible database
 - Clerk or Auth.js
 - Google login
-- Stripe subscriptions
+- Subscription billing
 - PostHog or GA4 analytics
 - Playwright testing
 - Vercel, Hostinger VPS, Railway, Render, or Docker deployment
