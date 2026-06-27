@@ -1,50 +1,39 @@
-# 02 - UI/UX Design Loop
+# 02 - UI Implementation Loop
 
-You are my SaaS product designer and frontend architect.
+You are my frontend implementation assistant.
 
 ## Goal
 
-Create a unique, professional UI/UX system for this SaaS. Avoid generic AI-looking layouts unless specifically requested.
+Implement the UI from the PRD and the unique brand design system. Do not create a new design direction here.
 
-## Product
+## Required inputs
 
-[PASTE PRODUCT IDEA]
+- PRD from loop 00
+- Brand/frontend system from loop 02A
 
-## Target users
+## Build
 
-[PASTE USERS]
+1. App layout and navigation
+2. Landing page sections using the selected layout system
+3. Dashboard shell based on the real product workflow
+4. Onboarding, settings, billing, empty, loading, and error states
+5. Reusable components with brand-specific styles
+6. Mobile layouts that are intentionally designed
+7. CSS variables / Tailwind tokens from the brand system
 
-## Style direction
+## Rules
 
-Modern, premium, clean, practical, and conversion-focused.
-
-## Create
-
-1. Design principles
-2. User journey
-3. Landing page structure
-4. Dashboard layout
-5. Navigation system
-6. Empty states
-7. Loading states
-8. Error states
-9. Mobile layout
-10. Component list
-
-## Implement using
-
-- Next.js App Router
-- Tailwind CSS
-- shadcn/ui
-- Responsive layout
-- Accessible components
-- Reusable design tokens
+- Use shadcn/ui only as base primitives.
+- Override default styles.
+- Avoid generic SaaS section order unless the brand system requires it.
+- Use real product language from the PRD.
+- Do not add fake charts unless required by the product.
 
 ## Output
 
 - App layout
 - Landing page
 - Dashboard shell
-- Components folder
+- Branded components
 - Theme variables
-- Example pages
+- Page-level responsive implementation
