@@ -20,6 +20,21 @@ Build the project to 90% completion.
 Leave only env setup, provider keys and final business rules for me.
 ```
 
+For domain, auth, and billing setup, ask:
+
+```txt
+Read agent-loops/16-domain-auth-billing-setup.md and create the setup plan for:
+
+Domain: [yourdomain.com]
+App name: [your app name]
+Product idea: [your SaaS idea]
+Target users: [who will pay]
+Currency: [GBP/USD/EUR]
+Preferred billing: [monthly / yearly / both]
+Auth provider: [Clerk / Auth.js / Supabase Auth]
+Payment provider: [Stripe]
+```
+
 ## Suggested execution order
 
 1. `01-master-saas-scaffold.md`
@@ -37,6 +52,7 @@ Leave only env setup, provider keys and final business rules for me.
 13. `13-email-notifications.md`
 14. `14-security-hardening.md`
 15. `15-deployment.md`
+16. `16-domain-auth-billing-setup.md`
 
 ## Default SaaS stack
 
