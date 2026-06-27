@@ -10,35 +10,28 @@ Do not scaffold from a one-line idea. First create a PRD, then create a unique b
 Idea -> PRD -> Unique Design -> Scaffold -> Auth/DB -> Billing -> Analytics -> Testing -> Security -> Deploy
 ```
 
-## Recommended core order
+## Recommended order
 
-1. `00-idea-to-prd-market-research.md`
-2. `02a-unique-frontend-brand-design.md`
-3. `01-master-saas-scaffold.md`
-4. `02-ui-ux-design.md`
-5. `03-auth-prisma.md`
+1. `00-idea-to-prd.md`
+2. `01-unique-brand-design.md`
+3. `02-master-saas-scaffold.md`
+4. `03-ui-implementation.md`
+5. `04-authjs-prisma.md`
 6. `05-billing.md`
-7. `07-analytics.md`
-8. `08-agent-readiness.md` only if the app exposes APIs/agent workflows
-9. `09-marketing.md`
-10. `10-testing.md`
-11. `13-email-notifications.md` only if emails are needed in v1
-12. `14-security-hardening.md`
-13. `15-deployment.md`
-14. `16-domain-auth-billing-setup.md` when domain/provider setup is needed
-
-## Deprecated / do not use directly
-
-These are kept only as pointers for older workflows:
-
-- `04-google-login.md` -> use `03-auth-prisma.md`
-- `06-database-seed.md` -> use `03-auth-prisma.md`
-- `11-ecommerce-testing.md` -> use `05-billing.md` and `10-testing.md`
+7. `06-analytics.md`
+8. `07-agent-readiness.md` only if the app exposes APIs or agent workflows
+9. `08-marketing.md`
+10. `09-testing.md`
+11. `10-admin-panel.md` only if admin support is needed in v1
+12. `11-email-notifications.md` only if emails are needed in v1
+13. `12-security-hardening.md`
+14. `13-deployment.md`
+15. `14-domain-auth-billing-setup.md` when domain/provider setup is needed
 
 ## Standard usage
 
 ```txt
-Read agent-loops/00-idea-to-prd-market-research.md and create a PRD for:
+Read agent-loops/00-idea-to-prd.md and create a PRD for:
 
 Product idea: [your one-line idea]
 Target users: [optional]
@@ -49,21 +42,21 @@ Domain: [optional]
 Then:
 
 ```txt
-Read agent-loops/02a-unique-frontend-brand-design.md and create a unique brand/frontend design system from the PRD.
+Read agent-loops/01-unique-brand-design.md and create a unique brand/frontend design system from the PRD.
 Avoid generic AI SaaS patterns.
 ```
 
 Then:
 
 ```txt
-Read agent-loops/01-master-saas-scaffold.md and scaffold the app from the PRD and brand system.
+Read agent-loops/02-master-saas-scaffold.md and scaffold the app from the PRD and brand system.
 Build to 90 percent completion. Leave only secrets, provider dashboard setup, and final business edge cases for me.
 ```
 
 For domain, Auth.js, and billing setup:
 
 ```txt
-Read agent-loops/16-domain-auth-billing-setup.md and create the setup plan for:
+Read agent-loops/14-domain-auth-billing-setup.md and create the setup plan for:
 
 Domain: [domain.com]
 App name: [name]
@@ -91,6 +84,5 @@ Payment: Stripe
 
 - Run only the loops needed for the current stage.
 - Do not paste every loop into the agent at once.
-- Do not use deprecated loops.
 - Keep v1 small and useful.
 - Prefer one clear handoff between loops instead of repeating the full product context each time.
