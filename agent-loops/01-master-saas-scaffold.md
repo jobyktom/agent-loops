@@ -4,71 +4,59 @@ You are my SaaS scaffolding assistant.
 
 ## Goal
 
-Create a production-ready SaaS starter project that is around 90 percent complete. Leave only environment variables, provider keys, final brand content, and product-specific business logic for manual setup.
+Build the SaaS to roughly 90 percent completion from the PRD and brand system. Leave only provider dashboard values, secrets, final copy, and business-specific edge cases for manual setup.
 
-## Important first step
+## Required inputs
 
-Do not scaffold directly from a one-line product idea.
+- PRD from `00-idea-to-prd-market-research.md`
+- Brand/frontend direction from `02a-unique-frontend-brand-design.md`
+- Domain/auth/billing plan if available from `16-domain-auth-billing-setup.md`
 
-If the user gives only a short idea, first run:
+If the user gives only a one-line idea, stop and run loop 00 first.
+
+## Default stack
 
 ```txt
-agent-loops/00-idea-to-prd-market-research.md
+Next.js App Router
+TypeScript
+Tailwind CSS
+shadcn/ui as primitives only
+Auth.js + Google OAuth
+Prisma + PostgreSQL
+Stripe billing
+PostHog or GA4
+Playwright
 ```
 
-Use the generated PRD as the source of truth for the scaffold.
+## Build order
 
-If the user already provides a PRD, validate it quickly and continue.
+1. Project structure and package setup
+2. Brand tokens and layout shell
+3. Landing page from PRD + brand system
+4. Auth.js + Prisma models
+5. Dashboard and onboarding
+6. Pricing and billing routes
+7. Settings and billing page
+8. Analytics events
+9. Basic tests
+10. README, .env.example, TODO.md
 
-## Default tech stack
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Prisma ORM
-- PostgreSQL-compatible database
-- Auth.js for authentication
-- Google login
-- Stripe subscriptions
-- PostHog or GA4 analytics
-- Playwright testing
-- Basic SEO
-- Clean folder architecture
-
-## Before coding
-
-1. Confirm there is a PRD or create one using loop 00.
-2. Extract MVP scope from the PRD.
-3. Create the full product structure.
-4. Decide the folder architecture.
-5. List all required environment variables.
-6. Create a task checklist.
-7. Then implement step by step.
-
-## Required output
+## Output
 
 - Working app shell
-- Landing page based on PRD positioning
-- Auth.js Google login pages
+- Branded landing page
+- Auth.js Google login
 - Dashboard
-- Pricing page based on PRD pricing hypothesis
-- Settings page
-- Billing flow
-- Database schema
-- API routes or server actions
-- Reusable UI components
-- Analytics events from PRD
-- Test setup
-- README setup guide
-- .env.example
-- TODO.md for manual steps
+- Pricing and billing flow
+- Prisma schema and seed
+- API routes/server actions
+- Analytics helper
+- Playwright smoke tests
+- README and setup checklist
 
 ## Rules
 
-- Do not only describe the architecture. Build actual files.
-- Keep code clean, typed, and reusable.
-- Leave placeholders only for keys, provider IDs, and final business logic.
-- Prefer practical implementation over over-engineering.
+- Build files, not just plans.
 - Do not invent features outside the PRD unless required for auth, billing, analytics, testing, security, or deployment.
-- Keep the MVP focused and shippable.
+- Use shadcn/ui only as primitives; apply the custom brand system.
+- Keep v1 focused and shippable.
