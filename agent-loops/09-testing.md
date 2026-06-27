@@ -22,6 +22,7 @@ Add a small, high-value test suite. Do not over-test v1.
 7. Billing webhook rejects invalid requests safely
 8. API health endpoint works
 9. Mobile viewport smoke test
+10. Auth error page handles `OAuthAccountNotLinked` with a friendly message
 
 ## Critical journey test
 
@@ -37,6 +38,16 @@ Rules:
 - Use payment test mode or mocked checkout. Never use real card payments.
 - Test the journey at route/state level if external providers cannot run in CI.
 - Keep this as one focused journey test, not many duplicated tests.
+
+## Auth edge-case test
+
+Add one test or manual QA step for account linking:
+
+```txt
+Existing email/password user -> sign in with Google using same verified email -> app links or shows clear recovery flow based on chosen policy
+```
+
+Do not allow duplicate users with the same email.
 
 ## Output
 
