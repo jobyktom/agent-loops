@@ -1,45 +1,42 @@
-# 03 - Auth and Prisma Loop
+# 03 - Auth.js, Google Login and Prisma Loop
 
-You are my SaaS authentication and database architect.
+You are my SaaS auth and database assistant.
 
 ## Goal
 
-Set up authentication and database structure for a multi-user SaaS.
+Set up Auth.js Google login with Prisma and PostgreSQL, plus the minimum SaaS data model.
 
-## Use
+## Build
 
-- Next.js App Router
-- Prisma ORM
-- PostgreSQL
-- Clerk or Auth.js
-- Google login
-- Role-based access
+1. Auth.js setup with Google provider
+2. Prisma adapter
+3. Auth route handler
+4. Sign-in and sign-out UI
+5. Protected dashboard routes
+6. Onboarding redirect for new users
+7. Role and plan aware session helper
+8. .env.example and README setup notes
 
-## Create Prisma models for
+## Prisma models
 
-- User
-- Profile
-- Organisation or Workspace
-- Membership
-- Role
-- Subscription
-- UsageLog
-- AuditLog
-- AppSetting
+```txt
+User
+Account
+Session
+VerificationToken
+Workspace
+Membership
+Subscription
+UsageLog
+AuditLog
+```
 
-## Requirements
+## Access rules
 
-1. Authenticated dashboard only.
-2. Public landing and pricing pages.
-3. Protected routes.
-4. Admin-only routes.
-5. User onboarding after first login.
-6. Store external auth provider ID.
-7. Add createdAt and updatedAt fields.
-8. Add seed script with test users and sample workspace.
-9. Add migration commands in README.
-10. Add .env.example.
+- Public: landing, pricing, legal pages
+- Authenticated: dashboard, settings, billing
+- Admin only: admin routes
 
 ## Output
 
-Create actual code, schema, helpers, and setup notes.
+Actual code, schema, migration notes, seed script, auth helpers, and manual Google OAuth checklist.
