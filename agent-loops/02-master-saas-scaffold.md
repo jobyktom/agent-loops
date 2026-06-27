@@ -41,6 +41,16 @@ Playwright
 9. Basic tests
 10. README, .env.example, TODO.md
 
+## Demo and fallback data rule
+
+If demo data, seed data, mock users, fake metrics, sample products, fallback copy, placeholder images, or temporary dashboards are added:
+
+- Add a `TODO-demo-data.md` cleanup list.
+- Mark each item as `dev only`, `safe fallback`, or `must remove before production`.
+- Gate dev-only data behind environment checks.
+- Do not let fake users, fake payments, fake analytics, or placeholder customer data appear in production.
+- Add cleanup actions to the deployment checklist.
+
 ## Output
 
 - Working app shell
