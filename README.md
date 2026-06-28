@@ -7,7 +7,7 @@ Reusable, low-token agent loops for building SaaS apps consistently.
 Do not scaffold from a one-line idea. First create a PRD, then create a unique brand/frontend direction, then build.
 
 ```txt
-Idea -> PRD -> Unique Design -> Scaffold -> Auth/DB -> Billing -> Analytics -> Testing -> Security -> Deploy
+Idea -> PRD -> Unique Design -> Scaffold -> Clerk/Auth/DB -> Billing -> Analytics -> Testing -> Security -> Deploy
 ```
 
 ## Recommended order
@@ -16,7 +16,7 @@ Idea -> PRD -> Unique Design -> Scaffold -> Auth/DB -> Billing -> Analytics -> T
 2. `01-unique-brand-design.md`
 3. `02-master-saas-scaffold.md`
 4. `03-ui-implementation.md`
-5. `04-authjs-prisma.md`
+5. `04-clerk-prisma.md`
 6. `05-billing.md`
 7. `06-analytics.md`
 8. `07-agent-readiness.md` only if the app exposes APIs or agent workflows
@@ -54,7 +54,7 @@ Read agent-loops/02-master-saas-scaffold.md and scaffold the app from the PRD an
 Build to 90 percent completion. Leave only secrets, provider dashboard setup, and final business edge cases for me.
 ```
 
-For domain, Auth.js, and billing setup:
+For domain, Clerk, and billing setup:
 
 ```txt
 Read agent-loops/14-domain-auth-billing-setup.md and create the setup plan for:
@@ -64,7 +64,7 @@ App name: [name]
 Product idea: [summary]
 Currency: GBP
 Billing: both
-Auth: Auth.js
+Auth: Clerk
 Payment: Stripe
 ```
 
@@ -81,7 +81,7 @@ Define trigger, verifier, state storage, stop rules, budget, and human gates.
 - TypeScript
 - Tailwind CSS
 - shadcn/ui as primitives only
-- Auth.js + Google OAuth
+- Clerk authentication
 - Prisma + PostgreSQL
 - Stripe-style subscriptions
 - PostHog or GA4
