@@ -49,6 +49,16 @@ Existing email/password user -> sign in with Google using same verified email ->
 
 Do not allow duplicate users with the same email.
 
+## Self-running loop tests
+
+If the product includes recurring, scheduled, or autonomous workflows, verify:
+
+- separate verifier exists and can fail clearly
+- state storage exists and survives between runs
+- max iterations/runtime/retries are enforced
+- human-gated actions cannot run without approval
+- dry run works before live run
+
 ## Output
 
 - `tests/e2e` folder
