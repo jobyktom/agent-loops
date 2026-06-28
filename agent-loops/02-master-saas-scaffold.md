@@ -21,7 +21,7 @@ Next.js App Router
 TypeScript
 Tailwind CSS
 shadcn/ui as primitives only
-Auth.js + Google OAuth
+Clerk authentication
 Prisma + PostgreSQL
 Stripe billing
 PostHog or GA4
@@ -33,7 +33,7 @@ Playwright
 1. Project structure and package setup
 2. Brand tokens and layout shell
 3. Landing page from PRD + brand system
-4. Auth.js + Prisma models
+4. Clerk auth + Prisma app models
 5. Dashboard and onboarding
 6. Pricing and billing routes
 7. Settings and billing page
@@ -55,7 +55,7 @@ If demo data, seed data, mock users, fake metrics, sample products, fallback cop
 
 - Working app shell
 - Branded landing page
-- Auth.js Google login
+- Clerk sign-in/sign-up
 - Dashboard
 - Pricing and billing flow
 - Prisma schema and seed
