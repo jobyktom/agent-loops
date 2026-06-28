@@ -47,6 +47,17 @@ remove before production / keep but gate to development / keep as safe empty-sta
 
 Add cleanup actions to `TODO.md` or `TODO-demo-data.md`. Production must not expose fake users, fake payments, fake analytics, or placeholder customer data.
 
+## Autonomous workflow deployment gate
+
+If the app includes recurring, scheduled, or autonomous workflows, production deployment requires:
+
+- verifier command documented and passing
+- state storage configured outside the prompt/skill file
+- max iterations, runtime, retries, and spend/API-call limits configured
+- human gates enabled for risky actions
+- dry run completed before first live run
+- failure escalation documented
+
 ## Verify
 
 - Build passes
@@ -54,3 +65,4 @@ Add cleanup actions to `TODO.md` or `TODO-demo-data.md`. Production must not exp
 - Prisma client generates
 - Required environment variables are documented
 - Demo/fallback data cleanup is completed or clearly documented
+- Autonomous workflow safety gate is complete if applicable
