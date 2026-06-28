@@ -1,10 +1,10 @@
-# 14 - Domain Auth.js and Billing Setup Loop
+# 14 - Domain Clerk and Billing Setup Loop
 
-You are my domain, Auth.js, and billing setup assistant.
+You are my domain, Clerk, and billing setup assistant.
 
 ## Goal
 
-Given a domain and SaaS idea, generate the exact URLs, env variables, dashboard checklist, and implementation checklist for Auth.js Google login and Stripe-style billing.
+Given a domain and SaaS idea, generate the exact URLs, env variables, dashboard checklist, and implementation checklist for Clerk auth and Stripe-style billing.
 
 ## Input
 
@@ -15,7 +15,7 @@ Product idea:
 Target users: optional
 Currency: GBP/USD/EUR
 Billing: monthly/yearly/both
-Auth: Auth.js
+Auth: Clerk
 Payment: Stripe by default
 ```
 
@@ -26,22 +26,25 @@ Payment: Stripe by default
 ```txt
 Production: https://[domain]
 Sign in: https://[domain]/sign-in
+Sign up: https://[domain]/sign-up
+Onboarding: https://[domain]/onboarding
 Dashboard: https://[domain]/dashboard
 Pricing: https://[domain]/pricing
 Billing: https://[domain]/dashboard/billing
-Google callback: https://[domain]/api/auth/callback/google
 Billing webhook: https://[domain]/api/billing/webhook
-Local callback: http://localhost:3000/api/auth/callback/google
-Local webhook: http://localhost:3000/api/billing/webhook
+Local URL: http://localhost:3000
+Local billing webhook: http://localhost:3000/api/billing/webhook
 ```
 
 ### Environment variables
 
 ```txt
-AUTH_SECRET=
-AUTH_URL=https://[domain]
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
 NEXT_PUBLIC_APP_URL=https://[domain]
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
@@ -58,8 +61,11 @@ Create Free, Pro, and Business plans with monthly/yearly prices, limits, upgrade
 
 ### Manual dashboard checklist
 
-- Google OAuth consent screen
-- Google authorised origins and redirect URIs
+- Clerk application created
+- Allowed redirect URLs configured
+- Allowed origins configured
+- Google social login enabled in Clerk if needed
+- Clerk sign-in/sign-up URLs confirmed
 - Stripe products: Pro and Business
 - Stripe prices: monthly and yearly
 - Stripe customer portal
@@ -67,25 +73,27 @@ Create Free, Pro, and Business plans with monthly/yearly prices, limits, upgrade
 
 ### Build checklist
 
-1. Auth.js Google provider
-2. Prisma adapter and auth models
+1. Clerk provider and middleware
+2. Sign-in/sign-up pages
 3. Protected routes and onboarding
-4. Pricing page
-5. Checkout route
-6. Billing portal route
-7. Webhook route
-8. Subscription model and plan gates
-9. .env.example and setup README
-10. Test-mode billing smoke tests
+4. Local user sync using Clerk user ID
+5. App-level roles and plan gates in database
+6. Pricing page
+7. Checkout route
+8. Billing portal route
+9. Webhook route
+10. Subscription model and plan gates
+11. .env.example and setup README
+12. Test-mode billing smoke tests
 
 ## Output
 
 ```txt
-# Domain Auth.js and Billing Setup
+# Domain Clerk and Billing Setup
 
 ## Assumptions
 ## URLs
-## Google OAuth setup
+## Clerk setup
 ## Pricing
 ## Payment provider setup
 ## Environment variables
