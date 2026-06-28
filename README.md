@@ -27,6 +27,7 @@ Idea -> PRD -> Unique Design -> Scaffold -> Auth/DB -> Billing -> Analytics -> T
 13. `12-security-hardening.md`
 14. `13-deployment.md`
 15. `14-domain-auth-billing-setup.md` when domain/provider setup is needed
+16. `15-self-running-loop-safety.md` only for recurring, scheduled, or autonomous loops
 
 ## Standard usage
 
@@ -67,6 +68,13 @@ Auth: Auth.js
 Payment: Stripe
 ```
 
+For recurring or autonomous workflows:
+
+```txt
+Read agent-loops/15-self-running-loop-safety.md before building the loop.
+Define trigger, verifier, state storage, stop rules, budget, and human gates.
+```
+
 ## Default stack
 
 - Next.js App Router
@@ -86,3 +94,4 @@ Payment: Stripe
 - Do not paste every loop into the agent at once.
 - Keep v1 small and useful.
 - Prefer one clear handoff between loops instead of repeating the full product context each time.
+- Use the self-running loop safety file only for recurring, scheduled, or autonomous workflows.
